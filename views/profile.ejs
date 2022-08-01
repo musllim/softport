@@ -1,0 +1,127 @@
+<%- include("partials/Header") %>
+<body>
+  <div class="container-scroller">
+    <%- include("partials/nav") %>
+    <h1><%= locals.msg %></h1>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial -->
+      <div style="width: 100vw" class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-8 m-auto">
+              <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h1 class="text-center text-primary">
+                        Fill out your profile
+                      </h1>
+                      <img
+                        style="aspect-ratio: 1 / 1; object-fit: cover"
+                        class="col-md-3 mb-4"
+                        src="/uploads/images/<%=locals.user.avatar %>"
+                        alt="<%= locals.user.name %> profile picture"
+                      />
+                      <br />
+                      <form
+                        class="forms-sample"
+                        action="/profile"
+                        method="post"
+                        enctype="multipart/form-data"
+                      >
+                        <div class="form-group">
+                          <label for="exampleInputName1">Name</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            value="<%= locals.user.name %>"
+                            id="exampleInputName1"
+                            placeholder="Name"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail3">Reg number</label>
+                          <input
+                            type="text"
+                            name="regNo"
+                            value="<%= locals.user.regNo %>"
+                            class="form-control"
+                            id="exampleInputEmail3"
+                            placeholder="Code"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail3"
+                            >Department / option</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="departmentOPtion"
+                            value="<%= locals.user.departmentOPtion %>"
+                            id="exampleInputEmail4"
+                            placeholder="department"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <div class="form-radio">
+                            <label class="exampleInputEmail3">Year </label>
+                            <input
+                              type="number"
+                              name="year"
+                              value="<%= locals.user.year %>"
+                              class="form-control"
+                              id="exampleInputEmail4"
+                              placeholder="Year"
+                            />
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label>File upload</label>
+                          <input
+                            type="file"
+                            id="file"
+                            name="avatar"
+                            class="file-upload-default"
+                          />
+                          <div class="input-group col-xs-12">
+                            <input
+                              type="text"
+                              class="form-control file-upload-info"
+                              disabled
+                              placeholder="profile picture file"
+                            />
+                            <span class="input-group-append">
+                              <label
+                                role="button"
+                                for="file"
+                                class="file-upload-browse btn btn-info"
+                                type="button"
+                              >
+                                Upload
+                              </label>
+                            </span>
+                          </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success mr-2">
+                          Submit
+                        </button>
+                        <button type="reset" class="btn btn-light">
+                          Cancel
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%- include("partials/footer") %>
+      </div>
+    </div>
+  </div>
+</body>

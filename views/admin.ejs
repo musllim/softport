@@ -1,0 +1,66 @@
+<%- include("partials/header") %>
+<body>
+  <div class="container-scroller">
+    <%- include("partials/nav") %>
+
+    <div class="container-fluid page-body-wrapper">
+      <%- include("partials/studentsSideBar", locals.users) %>
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <%- include("partials/profile", locals.selectedUser) %>
+          <!-- <%-include("partials/submitedWorks") %> -->
+          <div class="row">
+            <% locals.portfolio?.forEach(work =>{%>
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body pb-0">
+                  <div class="d-flex justify-content-between">
+                    <h4 class="card-title mb-0"><%= work.moduleName %></h4>
+                    <p class="font-weight-semibold mb-0">
+                      <%= new Date(work.date).toDateString() %>
+                    </p>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <h4 class="card-title mb-0"><%= work.moduleCode %></h4>
+                    <p class="font-weight-semibold mb-0">
+                      <%= work.category %>
+                    </p>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <h4 class="card-title mb-2">
+                      learning Unit <%= work.learningUnit %>
+                    </h4>
+                  </div>
+                  <a
+                    href="/uploads/portfolio/<%= work.doc %>"
+                    type="submit"
+                    class="btn btn-success mr-2 mb-4"
+                  >
+                    View File
+                  </a>
+                  <form
+                    action="/portfolio/<%= work._id.toString() %>?_method=PUT"
+                    method="post"
+                  >
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Decision</label>
+                      <div class="col-sm-6">
+                        <select name="decision" class="form-control">
+                          <option>Competent</option>
+                          <option>Not Yet Competent</option>
+                        </select>
+                      </div>
+                      <button class="btn btn-success ml-auto">save</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <%})%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,131 @@
+<div class="col-md-4">
+  <div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Add work</h4>
+          <p class="card-description">Upload work on your portfolio.</p>
+          <form
+            class="forms-sample"
+            action="/portfolio/add"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <!-- <div class="form-group">
+              <label for="exampleInputName1">Module Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="moduleName"
+                id="exampleInputName1"
+                placeholder="Name"
+              />
+            </div> -->
+            <div class="form-group">
+              <label for="exampleInputEmail3">Module Code</label>
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputEmail3"
+                name="moduleCode"
+                placeholder="module Code"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail3">Learning unit</label>
+              <input
+                type="number"
+                class="form-control"
+                id="exampleInputEmail4"
+                name="learningUnit"
+                placeholder="unit 1"
+              />
+            </div>
+            <div class="form-group">
+              <p>Category</p>
+              <div class="form-radio">
+                <label class="form-check-label">
+                  <input
+                    type="radio"
+                    class="form-check-input"
+                    name="category"
+                    id="optionsRadios1"
+                    value="Exam"
+                    checked
+                  />
+                  Exam
+                </label>
+              </div>
+              <div class="form-radio">
+                <label class="form-check-label">
+                  <input
+                    type="radio"
+                    class="form-check-input"
+                    name="category"
+                    id="optionsRadios2"
+                    value="CAT"
+                  />
+                  CAT
+                </label>
+              </div>
+              <div class="form-radio">
+                <label class="form-check-label">
+                  <input
+                    type="radio"
+                    class="form-check-input"
+                    name="category"
+                    id="optionsRadios3"
+                    value="Assessment"
+                  />
+                  Assessment
+                </label>
+              </div>
+              <div class="form-radio">
+                <label class="form-check-label">
+                  <input
+                    type="radio"
+                    class="form-check-input"
+                    name="category"
+                    id="optionsRadios3"
+                    value="Assessment"
+                  />
+                  Assignment
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>File upload</label>
+              <input
+                type="file"
+                name="doc"
+                id="file"
+                class="file-upload-default"
+              />
+              <div class="input-group col-xs-12">
+                <input
+                  type="text"
+                  class="form-control file-upload-info"
+                  disabled
+                  placeholder="Upload file"
+                />
+                <span class="input-group-append">
+                  <label
+                    role="button"
+                    for="file"
+                    class="file-upload-browse btn btn-info"
+                    type="button"
+                  >
+                    Upload
+                  </label>
+                </span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success mr-2">Submit</button>
+            <button type="reset" class="btn btn-light">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

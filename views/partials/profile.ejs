@@ -1,0 +1,219 @@
+<div class="row">
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="text-center text-primary">
+          Profile of <%= locals.selectedUser?.regNo %>
+        </h1>
+        <form
+          action="/dashboard/<%= locals.selectedUser?.id %>?_method=PUT"
+          method="post"
+          class="form-sample"
+        >
+          <div class="row">
+            <img
+              class="col-sm-4 ml-auto mb-2"
+              src="/uploads/images/<%=locals.selectedUser?.avatar%>"
+              alt=""
+            />
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Names</label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="name"
+                    value="<%=locals.selectedUser?.name%>"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Req number</label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="regNo"
+                    value="<%=locals.selectedUser?.regNo%>"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Gender</label>
+                <div class="col-sm-9">
+                  <select name="sex" class="form-control">
+                    <% if(locals.selectedUser?.sex == "Male") {%>
+                    <option selected>Male</option>
+                    <option>Female</option>
+                    <%} else {%>
+                    <option selected>Female</option>
+                    <option>Male</option>
+                    <%}%>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Date of Birth</label>
+                <div class="col-sm-9">
+                  <input
+                    class="form-control"
+                    name="dateOfBirth"
+                    value="<%= locals.selectedUser?.date%>"
+                    placeholder="dd/mm/yyyy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row">
+         
+          </div> -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Department</label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="departmentOPtion"
+                    value="<%= locals.selectedUser?.departmentOPtion %>"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Option</label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="option"
+                    value="<%= locals.selectedUser?.departmentOPtion %>"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Year</label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="year"
+                    value="<%= locals.selectedUser?.year%>"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">District</label>
+                <div class="col-sm-9">
+                  <select name="district" class="form-control">
+                    <option>Ngoma</option>
+                    <option>Kirehe</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success ml-2">save</button>
+        </form>
+      </div>
+    </div>
+    <div class="card mt-4">
+      <div class="card-body">
+        <h1 class="text-center text-primary">Add a module to be taught</h1>
+        <form action="/dashboard/addModule" method="post" class="form-sample">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">module name</label>
+                <div class="col-sm-9">
+                  <input type="text" name="moduleName" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">module code</label>
+                <div class="col-sm-9">
+                  <input type="text" name="moduleCode" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">learning units</label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="learningUnits"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">credits</label>
+                <div class="col-sm-9">
+                  <input type="text" name="credits" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Year</label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="year"
+                    value="<%= locals.selectedUser?.year%>"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">lecturer</label>
+                <div class="col-sm-9">
+                  <input
+                    type="text"
+                    name="lecturer"
+                    placeholder="please enter ID"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-success ml-2">save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

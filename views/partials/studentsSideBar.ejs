@@ -1,0 +1,22 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item nav-category">All Users</li>
+    <%locals.users.forEach(user => {%>
+    <li class="m-0 nav-item nav-profile">
+      <a href="/dashboard/<%= user.id %>" class="nav-link">
+        <div class="profile-image">
+          <img
+            class="img-xs rounded-circle"
+            src="/uploads/images/<%= user.avatar %>"
+            alt="profile image"
+          />
+          <div class="dot-indicator bg-success"></div>
+        </div>
+        <div class="text-wrapper">
+          <p class="profile-name"><%= user.name %></p>
+        </div>
+      </a>
+    </li>
+    <%})%>
+  </ul>
+</nav>
