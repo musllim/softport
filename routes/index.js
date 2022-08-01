@@ -57,6 +57,7 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
       portfolio,
       notifications,
       users,
+      isLecturer: true,
     });
   }
   res.render("admin", {
@@ -68,10 +69,7 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
 });
 
 router.get("/dashboard/:userId", ensureAuthenticated, async (req, res) => {
-  if (
-    !req.user.permission.toLowerCase().split(" ").includes("admin") &&
-    !req.user.permission.toLowerCase().split(" ").includes("lecturer")
-  )
+  if (!req.user.permission.toLowerCase().split(" ").includes("admin"))
     return res.redirect("/dashboard");
   const selectedUser = await User.findById(req.params.userId);
   const portfolio = await (
@@ -85,18 +83,12 @@ router.get("/dashboard/:userId", ensureAuthenticated, async (req, res) => {
   ).filter((not) => not.to.toString() === req.user.id);
 
   const users = await User.find({});
-  if (req.user.permission.toLowerCase().split(" ").includes("lecturer"))
-    return res.render("admin", {
-      user: req.user,
-      portfolio,
-      notifications,
-      users,
-    });
 
   res.render("admin", {
     user: req.user,
     portfolio,
     notifications,
+    selectedUser,
     users,
   });
 });
