@@ -29,16 +29,17 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
     await Portfolio.where("").populate("owner")
   ).filter(
     (work) =>
-      work.owner.email === req.user.email || req.user.permission === "admin"
+      work?.owner?.email === req?.user?.email ||
+      req?.user?.permission === "admin"
   );
   const notifications = await (
     await Notification.find().populate("sender")
-  ).filter((not) => not.to.toString() === req.user.id);
+  ).filter((not) => not?.to?.toString() === req?.user?.id);
 
   const users = await User.find({});
   if (
-    !req.user.permission.toLowerCase().split(" ").includes("admin") &&
-    !req.user.permission.toLowerCase().split(" ").includes("lecturer")
+    !req.user.permission?.toLowerCase()?.split(" ").includes("admin") &&
+    !req.user.permission?.toLowerCase()?.split(" ").includes("lecturer")
   )
     return res.render("index", {
       user: req.user,
@@ -51,7 +52,7 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
       .map((module) => module.moduleCode);
     const portfolio = await (
       await Portfolio.find()
-    ).filter((portf) => moduleTeaches.includes(portf.moduleCode));
+    ).filter((portf) => moduleTeaches?.includes(portf.moduleCode));
     return res.render("admin", {
       user: req.user,
       portfolio,
