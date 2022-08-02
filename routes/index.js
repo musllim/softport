@@ -69,6 +69,13 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
   });
 });
 
+router.get("/logout", ensureAuthenticated, async (req, res, next) => {
+  req.logout((err) => {
+    if (err) return next(err);
+    res.redirect("/");
+  });
+});
+
 router.get("/dashboard/:userId", ensureAuthenticated, async (req, res) => {
   if (!req.user.permission.toLowerCase().split(" ").includes("admin"))
     return res.redirect("/dashboard");
