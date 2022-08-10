@@ -9,3 +9,5 @@ makeit work day 3
 make refactoring day 4
 
 host website on heroku day 5
+
+do testing and development

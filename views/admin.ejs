@@ -40,13 +40,7 @@
                       learning Unit <%= work.learningUnit %>
                     </h4>
                   </div>
-                  <a
-                    href="/uploads/portfolio/<%= work.doc %>"
-                    type="submit"
-                    class="btn btn-success mr-2 mb-4"
-                  >
-                    View File
-                  </a>
+
                   <form
                     action="/portfolio/<%= work._id.toString() %>?_method=PUT"
                     method="post"
@@ -62,6 +56,22 @@
                       <button class="btn btn-success ml-auto">save</button>
                     </div>
                   </form>
+                  <div class="d-flex mt-4">
+                    <form
+                      class="mb-4"
+                      action="/portfolio/<%= work._id.toString() %>?_method=DELETE"
+                      method="post"
+                    >
+                      <button class="btn btn-danger ml-auto">delete</button>
+                    </form>
+                    <a
+                      href="/uploads/portfolio/<%= work.doc %>"
+                      type="submit"
+                      class="btn btn-success ml-auto mb-4"
+                    >
+                      View File
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

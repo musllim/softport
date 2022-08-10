@@ -84,7 +84,9 @@ router.get("/dashboard/:userId", ensureAuthenticated, async (req, res) => {
     await Portfolio.where("").populate("owner")
   ).filter(
     (work) =>
-      work.owner.email === req.user.email || req.user.permission === "admin"
+      (work?.owner?.email === req.user.email ||
+        req.user.permission === "admin") &&
+      work?.owner.id === req.params.userId
   );
   const notifications = await (
     await Notification.find().populate("sender")

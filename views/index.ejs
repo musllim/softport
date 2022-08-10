@@ -75,7 +75,7 @@
                               <td><%= work.moduleName %></td>
                               <td><%= work.moduleCode %></td>
                               <td><%= work?.credits %></td>
-                              <td><%= new Date(work.date).toDateString() %></td>
+                              <td><%= work.category %></td>
                               <td><%= work?.decision %></td>
                             </tr>
                             <%})%>
@@ -91,8 +91,6 @@
           </div>
           <%- include("partials/contactForm", locals.notifications ) %>
         </div>
-
-        <%- include("partials/footer") %>
       </div>
     </div>
   </div>

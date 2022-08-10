@@ -41,6 +41,21 @@ router.put("/:id", async (req, res) => {
   await user.save();
   res.redirect("/dashboard");
 });
+router.delete("/:id", async (req, res) => {
+  if (!req.user.permission.toLowerCase().split(" ").includes("admin"))
+    return res.redirect("/dashboard");
+  // const portfolio = await Portfolio.findById(req.params.id);
+  const portfolio = await Portfolio.findOneAndDelete(req.params.id);
+  const user = await User.findById(req.user.id);
+  console.log(portfolio);
+  const newNotification = new Notification({
+    sender: req.user.id,
+    to: portfolio.owner._id,
+    message: "deleted your work.",
+  });
+  await newNotification.save();
+  res.redirect("/dashboard");
+});
 router.post(
   "/add",
   ensureAuthenticated,
@@ -66,7 +81,7 @@ router.post(
         // return console.log(module);
         if (
           (module && module.learningUnits < learningUnit) ||
-          moduleCode.toLowerCase() != module.moduleCode.toLowerCase()
+          moduleCode?.toLowerCase() != module?.moduleCode?.toLowerCase()
         ) {
           errors.push({ msg: "This learning unit does not exisit" });
           console.log(errors);
