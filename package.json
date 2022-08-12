@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "timeline",
   "main": "index.js",
   "engines": {
     "node": "14.x"
@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "bootstrap": "^5.2.0",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
@@ -31,5 +32,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/musllim/softport.git"
+  },
+  "bugs": {
+    "url": "https://github.com/musllim/softport/issues"
+  },
+  "homepage": "https://github.com/musllim/softport#readme"
 }

@@ -10641,6 +10641,28 @@ pre {
   margin-bottom: 25px;
 }
 
+.avatar {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  margin-top: -1rem;
+  background-size: cover;
+  background-position-y: 0.1rem;
+  background-repeat: no-repeat;
+}
+
+.avatar.one {
+  background-image: url("/uploads/images/pierre.jpg");
+}
+.avatar.two {
+  background-image: url("/uploads/images/IMG_5980.jpg");
+}
+
+.avatar.three {
+  background-image: url("/uploads/images/IMG-20211122-WA0023-1.jpg");
+}
+
 @media (min-width: 576px) {
   .grid-margin-sm-0 {
     margin-bottom: 0;
