@@ -4,20 +4,20 @@
     <%- include("partials/nav") %>
 
     <div class="container-fluid page-body-wrapper">
-      <% if(!locals.isLecturer){%>
+      
       <i></i>
       <%- include("partials/studentsSideBar", locals.users) %>
       <i></i>
-      <%}%>
+      
 
       <div class="main-panel">
         <div class="content-wrapper">
-          <% if(!locals.isLecturer){%>
+          
           <i></i>
           <%- include("partials/profile", locals.selectedUser) %>
 
           <i></i>
-          <%}%>
+          
           <div class="row">
             <% locals.portfolio?.forEach(work =>{%>
             <div class="col-md-6 grid-margin stretch-card">

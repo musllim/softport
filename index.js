@@ -31,7 +31,7 @@ app.use(express.static("public"));
 
 app.use(
   session({
-    secret: "secret",
+    secret: process.env.SECRET,
     resave: true,
     saveUninitialized: true,
   })

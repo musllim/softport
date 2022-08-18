@@ -4,16 +4,89 @@
   <div class="container-scroller">
     <%- include("partials/nav", user) %>
 
-    <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial -->
       <div style="width: 100vw" class="main-panel">
         <div class="content-wrapper">
-          <!-- Page Title Header Starts-->
-
           <div class="row">
             <div class="col-md-8">
+              <% locals.moduleNames?.forEach(moduleName =>{%>
+              <h1><%= moduleName%></h1>
               <div class="row">
+                <% locals.portfolio?.filter(work =>{%> <%if(work.moduleName ==
+                moduleName){%>
+                <div class="col-md-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body pb-0">
+                      <div class="d-flex justify-content-between">
+                        <h4 class="card-title mb-0"><%= work.moduleName %></h4>
+                        <!-- <%= work.date.toDateString() === new
+                          Date().toString().slice(0, 15) ?  %> -->
+                        <p class="font-weight-semibold mb-0">
+                          <%= new Date(work.date).toDateString() %>
+                        </p>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <h4 class="card-title mb-0"><%= work.moduleCode %></h4>
+                        <p class="font-weight-semibold mb-0">
+                          <%= work.category %>
+                        </p>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <h4 class="card-title mb-2">
+                          learning Unit <%= work.learningUnit %>
+                        </h4>
+                      </div>
+                      <a
+                        href="/uploads/portfolio/<%= work.doc %>"
+                        type="submit"
+                        class="btn btn-success mr-2 mb-4"
+                      >
+                        download File
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <%}%> <%})%>
+              </div>
+              <%})%>
+              <div class="col-md-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <h2 class="mb-0">List of Modules</h2>
+                      <a href="#"><small>Show All</small></a>
+                    </div>
+                    <p>
+                      All your works in tis portfolio available on this list.
+                    </p>
+                    <div class="table-responsive">
+                      <table class="table table-striped table-hover">
+                        <thead>
+                          <tr>
+                            <th>Module Name</th>
+                            <th>Module Code</th>
+                            <th>No Credits</th>
+                            <th>Category</th>
+                            <th>Decisions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% locals.portfolio?.forEach(work =>{%>
+                          <tr>
+                            <td><%= work.moduleName %></td>
+                            <td><%= work.moduleCode %></td>
+                            <td><%= work?.credits %></td>
+                            <td><%= work.category %></td>
+                            <td><%= work?.decision %></td>
+                          </tr>
+                          <%})%>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="row">
                 <% locals.portfolio?.forEach(work =>{%>
                 <div class="col-md-6 grid-margin stretch-card">
                   <div class="card">
@@ -84,7 +157,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
             <%- include("partials/uploadPortfolio") %>
           </div>

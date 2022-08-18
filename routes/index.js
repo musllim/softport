@@ -32,6 +32,7 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
       work?.owner?.email === req?.user?.email ||
       req?.user?.permission === "admin"
   );
+
   const notifications = await (
     await Notification.find().populate("sender")
   ).filter((not) => not?.to?.toString() === req?.user?.id);
@@ -40,12 +41,17 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
   if (
     !req.user.permission?.toLowerCase()?.split(" ").includes("admin") &&
     !req.user.permission?.toLowerCase()?.split(" ").includes("lecturer")
-  )
+  ) {
+    const moduleNames = await (
+      await Module.find()
+    ).map((mod) => mod.moduleName);
     return res.render("index", {
       user: req.user,
       portfolio,
+      moduleNames,
       notifications,
     });
+  }
   if (req.user.permission.toLowerCase().split(" ").includes("lecturer")) {
     const moduleTeaches = await (await Module.find().populate("lecturer"))
       .filter((module) => module.lecturer.id.toString() === req.user.id)
@@ -58,12 +64,12 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
       portfolio,
       notifications,
       users,
-      isLecturer: true,
     });
   }
+  const portfolios = await Portfolio.find();
   res.render("admin", {
     user: req.user,
-    portfolio,
+    portfolio: portfolios,
     notifications,
     users,
   });
@@ -77,7 +83,7 @@ router.get("/logout", ensureAuthenticated, async (req, res, next) => {
 });
 
 router.get("/dashboard/:userId", ensureAuthenticated, async (req, res) => {
-  if (!req.user.permission.toLowerCase().split(" ").includes("admin"))
+  if (!req.user.permission == "admin" || !req.user.permission == "lecturer")
     return res.redirect("/dashboard");
   const selectedUser = await User.findById(req.params.userId);
   const portfolio = await (
@@ -104,10 +110,7 @@ router.get("/dashboard/:userId", ensureAuthenticated, async (req, res) => {
 });
 
 router.put("/dashboard/:userId", ensureAuthenticated, async (req, res) => {
-  if (
-    !req.user.permission.toLowerCase().split(" ").includes("admin") &&
-    !req.user.permission.toLowerCase().split(" ").includes("lecturer")
-  )
+  if (!req.user.permission == "admin" || !req.user.permission == "lecturer")
     return res.redirect("/dashboard");
   const selectedUser = await User.findById(req.params.userId);
   const {
@@ -161,8 +164,7 @@ router.put("/dashboard/:userId", ensureAuthenticated, async (req, res) => {
 });
 
 router.post("/dashboard/addModule", ensureAuthenticated, async (req, res) => {
-  if (!req.user.permission.toLowerCase().split(" ").includes("admin"))
-    return res.redirect("/dashboard");
+  if (!req.user.permission == "admin") return res.redirect("/dashboard");
   const { moduleName, moduleCode, learningUnits, credits, year, lecturer } =
     req.body;
   const module = new Module({

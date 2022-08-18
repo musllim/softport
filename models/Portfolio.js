@@ -30,6 +30,7 @@ const PortfolioSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+
   owner: { type: mongoose.SchemaTypes.ObjectId, required: true, ref: "User" },
   module: { type: mongoose.SchemaTypes.ObjectId, ref: "Module" },
 });
