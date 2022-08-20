@@ -54,7 +54,7 @@ router.get("/dashboard", ensureAuthenticated, async (req, res) => {
   }
   if (req.user.permission.toLowerCase().split(" ").includes("lecturer")) {
     const moduleTeaches = await (await Module.find().populate("lecturer"))
-      .filter((module) => module.lecturer.id.toString() === req.user.id)
+      .filter((module) => module.lecturer?.id?.toString() === req.user.id)
       .map((module) => module.moduleCode);
     const portfolio = await (
       await Portfolio.find()

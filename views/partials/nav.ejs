@@ -1,45 +1,41 @@
-<nav
-  class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
->
-  <div
-    class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center"
-  >
-    <a class="navbar-brand brand-logo" href="/"> SOFTPORT </a>
-  </div>
-  <div class="navbar-menu-wrapper justify-content-end d-flex align-items-center">
-    <ul class="navbar-nav p-4 ml-auto justify-content-between d-flex ">
-      <li class="nav-item font-weight-semibold d-none  d-sm-block">
-        <a href="/">home</a>
-      </li>
-      <li class="nav-item font-weight-semibold d-none  d-sm-block">
-        <a href="#about">about</a>
-      </li>
-      <li class="nav-item font-weight-semibold d-none  d-sm-block">
-        <a href="#contact">contacts</a>
-      </li>
-      <%if(locals.user){%>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand brand-logo" href="#">SOFTPORT</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">Home
+            <span class="visually-hidden"></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">about</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contacts">contacts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <%if(locals.user){%>
         
-        <li class="nav-item font-weight-semibold d-none  d-sm-block">
-          <a href="/dashboard">dashboard</a>
-        </li>
-        <li class="nav-item font-weight-semibold d-none  d-sm-block">
-          <a href="/profile">profile</a>
-        </li>
-      </ul>
-      <a href="/logout" class="btn btn-danger ml-2">logout</a>
-    <%} else{%>
-    <a href="/users/login" class="btn btn-success ml-2">login</a>
-  </ul>
-    <%}%>
-    <label
-    id="nav-mobile"
+          <li class="nav-item">
+            <a  class="nav-link" href="/dashboard">dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/profile">profile</a>
+          </li>
+        </ul>
+        <a href="/logout"  class="nav-link btn btn-danger" class="btn btn-danger ml-2">logout</a>
+      <%} else{%>
+      <a href="/users/login"  class="nav-link btn btn-success" class="btn btn-success ml-2">login</a>
+    </ul>
+      <%}%>
     
-      class="ml-2 d-block nav-mobile   d-sm-none"
-     
-    >
-     <button style="padding-top: 2px;padding-bottom: 2px; pointer-events: none;" class="btn  btn-success d-block"></button>
-     <button style="padding-top: 2px;pointer-events: none;padding-bottom: 2px" class="btn btn-success d-block my-1"></button>
-     <button style="padding-top: 2px;pointer-events: none;padding-bottom: 2px" class="btn btn-success d-block"></button>
-    </label>
+    </div>
   </div>
 </nav>
+
